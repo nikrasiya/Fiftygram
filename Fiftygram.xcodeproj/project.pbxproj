@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F85AE7C024AA7DA300D25BC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85AE7BF24AA7DA300D25BC4 /* AppDelegate.swift */; };
 		F85AE7C224AA7DA300D25BC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85AE7C124AA7DA300D25BC4 /* SceneDelegate.swift */; };
-		F85AE7C424AA7DA300D25BC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85AE7C324AA7DA300D25BC4 /* ViewController.swift */; };
+		F85AE7C424AA7DA300D25BC4 /* FiftygramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85AE7C324AA7DA300D25BC4 /* FiftygramViewController.swift */; };
 		F85AE7C724AA7DA300D25BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85AE7C524AA7DA300D25BC4 /* Main.storyboard */; };
 		F85AE7C924AA7DA900D25BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F85AE7C824AA7DA900D25BC4 /* Assets.xcassets */; };
 		F85AE7CC24AA7DA900D25BC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85AE7CA24AA7DA900D25BC4 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		F85AE7BC24AA7DA300D25BC4 /* Fiftygram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiftygram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F85AE7BF24AA7DA300D25BC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F85AE7C124AA7DA300D25BC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F85AE7C324AA7DA300D25BC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F85AE7C324AA7DA300D25BC4 /* FiftygramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiftygramViewController.swift; sourceTree = "<group>"; };
 		F85AE7C624AA7DA300D25BC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F85AE7C824AA7DA900D25BC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F85AE7CB24AA7DA900D25BC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,23 @@
 		F85AE7BE24AA7DA300D25BC4 /* Fiftygram */ = {
 			isa = PBXGroup;
 			children = (
-				F85AE7BF24AA7DA300D25BC4 /* AppDelegate.swift */,
-				F85AE7C124AA7DA300D25BC4 /* SceneDelegate.swift */,
-				F85AE7C324AA7DA300D25BC4 /* ViewController.swift */,
+				F85AE7C324AA7DA300D25BC4 /* FiftygramViewController.swift */,
 				F85AE7C524AA7DA300D25BC4 /* Main.storyboard */,
 				F85AE7C824AA7DA900D25BC4 /* Assets.xcassets */,
-				F85AE7CA24AA7DA900D25BC4 /* LaunchScreen.storyboard */,
-				F85AE7CD24AA7DA900D25BC4 /* Info.plist */,
+				F85AE7D324AA7DF300D25BC4 /* SupportingFiles */,
 			);
 			path = Fiftygram;
+			sourceTree = "<group>";
+		};
+		F85AE7D324AA7DF300D25BC4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F85AE7CA24AA7DA900D25BC4 /* LaunchScreen.storyboard */,
+				F85AE7BF24AA7DA300D25BC4 /* AppDelegate.swift */,
+				F85AE7C124AA7DA300D25BC4 /* SceneDelegate.swift */,
+				F85AE7CD24AA7DA900D25BC4 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F85AE7C424AA7DA300D25BC4 /* ViewController.swift in Sources */,
+				F85AE7C424AA7DA300D25BC4 /* FiftygramViewController.swift in Sources */,
 				F85AE7C024AA7DA300D25BC4 /* AppDelegate.swift in Sources */,
 				F85AE7C224AA7DA300D25BC4 /* SceneDelegate.swift in Sources */,
 			);
@@ -286,7 +294,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39AYRBS3ZY;
-				INFOPLIST_FILE = Fiftygram/Info.plist;
+				INFOPLIST_FILE = Fiftygram/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39AYRBS3ZY;
-				INFOPLIST_FILE = Fiftygram/Info.plist;
+				INFOPLIST_FILE = Fiftygram/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
