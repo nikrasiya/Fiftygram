@@ -15,6 +15,7 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet var sepiaButton: UIButton!
     @IBOutlet var noirButton: UIButton!
     @IBOutlet var vintageButton: UIButton!
+    @IBOutlet var bloomButton: UIButton!
     @IBOutlet var imageActivitiyIndicator: UIActivityIndicatorView!
     let serialQueue = DispatchQueue(label: "squeue.fiftygram")
 
@@ -23,6 +24,7 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
         sepiaButton.tag = ButtonIdentifier.Sepia.rawValue
         noirButton.tag = ButtonIdentifier.Noir.rawValue
         vintageButton.tag = ButtonIdentifier.Vintage.rawValue
+        bloomButton.tag = ButtonIdentifier.Bloom.rawValue
         imageActivitiyIndicator.isHidden = true
     }
 
@@ -35,7 +37,7 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
 
-    @IBAction func applySepia(_ sender: UIButton) {
+    @IBAction func applyFilter(_ sender: UIButton) {
         imageActivitiyIndicator.isHidden = false
         let filter: CIFilter?
         switch sender.tag {
@@ -46,6 +48,10 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
             filter = CIFilter(name: "CIPhotoEffectNoir")
         case ButtonIdentifier.Vintage.rawValue:
             filter = CIFilter(name: "CIPhotoEffectProcess")
+        case ButtonIdentifier.Bloom.rawValue:
+            filter = CIFilter(name: "CIBloom")
+            filter?.setValue(1.0, forKey: kCIInputIntensityKey)
+            filter?.setValue(10, forKey: kCIInputRadiusKey)
         default:
             filter = nil
         }
@@ -70,7 +76,7 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
 
         DispatchQueue.main.async {
             self.imageActivitiyIndicator.isHidden = true
-            self.imageView.image = UIImage(cgImage: cgImage, scale: original.scale, orientation: original.imageOrientation )
+            self.imageView.image = UIImage(cgImage: cgImage, scale: original.scale, orientation: original.imageOrientation)
         }
     }
 
@@ -86,10 +92,33 @@ class FiftygramViewController: UIViewController, UIImagePickerControllerDelegate
             original = image
         }
     }
+
+    @IBAction func savePhoto(_ sender: UIButton) {
+        guard let userImage = imageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(userImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error ☹️",
+                                       message: error.localizedDescription,
+                                       preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved 👏",
+                                       message: "Your filtered image has been saved to your photos. ",
+                                       preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
 }
 
 enum ButtonIdentifier: Int {
     case Sepia = 1
     case Noir = 2
     case Vintage = 3
+    case Bloom = 4
 }
